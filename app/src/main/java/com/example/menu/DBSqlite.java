@@ -2,6 +2,7 @@ package com.example.menu;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
@@ -33,17 +34,17 @@ public class DBSqlite extends SQLiteOpenHelper {
     public static final  String Column_Nom_cat = "nomCat";
     public static final  String Column_Nom_op = "nomOpt";
 
-    public static synchronized DBSqlite getInstance(Context context) {
+    /*public static synchronized DBSqlite getInstance(Context context) {
         // Use the application context, which will ensure that you
         // don't accidentally leak an Activity's context.
         if (sInstance == null) {
             sInstance = new DBSqlite(context.getApplicationContext());
-            sInstance.addData();
+            //sInstance.addData();
         }
         return sInstance;
-    }
+    }*/
 
-    private DBSqlite(@Nullable Context context) {
+    public DBSqlite(@Nullable Context context) {
         super(context, DB_NAME, null, DB_version);
         Log.d("const","in middle of construction");
         this.context = context;
@@ -73,11 +74,13 @@ public class DBSqlite extends SQLiteOpenHelper {
     void addData(){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
-        cv.put(Column_Nom_cat,"BURGER");
+        cv.put(Column_Nom_cat,"FAST-FOOD");
         db.insert(Table_NameD1,null,cv);
-        cv.put(Column_Nom_cat,"PIZZA");
+        cv.put(Column_Nom_cat,"ITALIEN");
         db.insert(Table_NameD1,null,cv);
         cv.put(Column_Nom_cat,"COFFE");
+        db.insert(Table_NameD1,null,cv);
+        cv.put(Column_Nom_cat,"ASIAN");
         db.insert(Table_NameD1,null,cv);
         ContentValues cv1 = new ContentValues();
         cv1.put(Column_Nom_op,"Sur place");
@@ -100,12 +103,68 @@ public class DBSqlite extends SQLiteOpenHelper {
         cv2.put(Column_Category,"COFFE");
         Log.d("middle","in middle of creation");
         cv2.put(Column_Speciality,"Petit-déjeuner, Café, Pizza, Tacos, Crêpes");
-        long result = db.insert(Table_NameF,null,cv2);
+        db.insert(Table_NameF,null,cv2);
+        ContentValues cv3 = new ContentValues();
+        cv3.put(Column_Nom,"Allo mama");
+        cv3.put(Column_Nom_cat,"ITALIEN");
+        cv3.put(Column_Description,"Cuisine maison, plats raffinés et classiques, ambiance décontractée et conviviale, café familial.");
+        cv3.put(Column_Adresse,"Residence Rayhana Imm LC5 MAG 36\n" +
+                "(En face centre mabrouka de langues)\n" +
+                "Marrakech");
+        cv3.put(Column_Telephone,"0525006603");
+        cv3.put(Column_Option,"Sur place");
+        cv3.put(Column_Image,"src/main/res/drawable-v24/gouth.jpg");
+        cv3.put(Column_Menu_img,"src/main/res/drawable-v24/gouth1.jpg");
+        cv3.put(Column_Reduction,"20%");
+        cv3.put(Column_Category,"ITALIEN");
+        Log.d("middle","in middle of creation");
+        cv3.put(Column_Speciality,"Italien, Pâtes, Pizza");
+        db.insert(Table_NameF,null,cv3);
+        ContentValues cv4 = new ContentValues();
+        cv4.put(Column_Nom,"Zatchi sushi");
+        cv4.put(Column_Nom_cat,"ASIAN");
+        cv4.put(Column_Description,"Asian modern cuisine");
+        cv4.put(Column_Adresse,"Rue oummo El banine, N1\n" +
+                "Marrakech");
+        cv4.put(Column_Telephone,"05244-34343");
+        cv4.put(Column_Option,"Sur place");
+        cv4.put(Column_Image,"src/main/res/drawable-v24/gouth.jpg");
+        cv4.put(Column_Menu_img,"src/main/res/drawable-v24/gouth1.jpg");
+        cv4.put(Column_Reduction,"15%");
+        cv4.put(Column_Category,"ASIAN");
+        Log.d("middle","in middle of creation");
+        cv4.put(Column_Speciality,"Sushis, Desserts, Nems");
+        db.insert(Table_NameF,null,cv4);
+        ContentValues cv5 = new ContentValues();
+        cv5.put(Column_Nom,"Café Lobo");
+        cv5.put(Column_Nom_cat,"COFFE");
+        cv5.put(Column_Description,"Cuisine maison, plats raffinés et classiques, ambiance décontractée et conviviale, café familial.");
+        cv5.put(Column_Adresse,"Imm N°1 Rés Les Oliviers 2, Avenue Mohamed VI\n" +
+                "Marrakech");
+        cv5.put(Column_Telephone,"05244-22422");
+        cv5.put(Column_Option,"Sur place");
+        cv5.put(Column_Image,"src/main/res/drawable-v24/gouth.jpg");
+        cv5.put(Column_Menu_img,"src/main/res/drawable-v24/gouth1.jpg");
+        cv5.put(Column_Reduction,"10%");
+        cv5.put(Column_Category,"COFFE");
+        Log.d("middle","in middle of creation");
+        cv5.put(Column_Speciality,"Café, Petit-déjeuner, Pizza, Tapas");
+        long result = db.insert(Table_NameF,null,cv5);
         if(result == -1){
             Toast.makeText(context,"failed",Toast.LENGTH_SHORT).show();
         }else{
             Toast.makeText(context,"Added successfully!",Toast.LENGTH_SHORT).show();
         }
+    }
+
+    Cursor readData(){
+        String query = "SELECT * FROM "+Table_NameF;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = null;
+        if(db!=null){
+            cursor = db.rawQuery(query,null);
+        }
+        return cursor;
     }
 
 

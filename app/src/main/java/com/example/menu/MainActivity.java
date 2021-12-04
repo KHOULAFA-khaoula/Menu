@@ -41,7 +41,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void InsertData(){
-        DBSqlite inst = DBSqlite.getInstance(MainActivity.this);
+        DBSqlite inst = new DBSqlite(MainActivity.this);
+        inst.addData();
         Log.d("creation","Accessed To DB");
         SharedPreferences prefs = getSharedPreferences("prefs",MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
