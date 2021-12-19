@@ -37,7 +37,7 @@ public class Home extends AppCompatActivity {
 
 
         StoreData();
-        customAdapter = new CustomAdapter(Home.this,_id,nomRest,nomCat,reduction);
+        customAdapter = new CustomAdapter(Home.this,_id,nomRest,nomCat,reduction,image);
 
         recyclerView.setAdapter(customAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(Home.this));

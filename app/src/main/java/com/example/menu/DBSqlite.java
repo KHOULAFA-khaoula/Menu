@@ -97,7 +97,7 @@ public class DBSqlite extends SQLiteOpenHelper {
                 "Marrakech");
         cv2.put(Column_Telephone,"0661965115");
         cv2.put(Column_Option,"Sur place");
-        cv2.put(Column_Image,"src/main/res/drawable-v24/gouth.jpg");
+        cv2.put(Column_Image,"gouth");
         cv2.put(Column_Menu_img,"src/main/res/drawable-v24/gouth1.jpg");
         cv2.put(Column_Reduction,"0%");
         cv2.put(Column_Category,"COFFE");
@@ -113,7 +113,7 @@ public class DBSqlite extends SQLiteOpenHelper {
                 "Marrakech");
         cv3.put(Column_Telephone,"0525006603");
         cv3.put(Column_Option,"Sur place");
-        cv3.put(Column_Image,"src/main/res/drawable-v24/gouth.jpg");
+        cv3.put(Column_Image,"aloo");
         cv3.put(Column_Menu_img,"src/main/res/drawable-v24/gouth1.jpg");
         cv3.put(Column_Reduction,"20%");
         cv3.put(Column_Category,"ITALIEN");
@@ -128,7 +128,7 @@ public class DBSqlite extends SQLiteOpenHelper {
                 "Marrakech");
         cv4.put(Column_Telephone,"05244-34343");
         cv4.put(Column_Option,"Sur place");
-        cv4.put(Column_Image,"src/main/res/drawable-v24/gouth.jpg");
+        cv4.put(Column_Image,"zatchi");
         cv4.put(Column_Menu_img,"src/main/res/drawable-v24/gouth1.jpg");
         cv4.put(Column_Reduction,"15%");
         cv4.put(Column_Category,"ASIAN");
@@ -143,7 +143,7 @@ public class DBSqlite extends SQLiteOpenHelper {
                 "Marrakech");
         cv5.put(Column_Telephone,"05244-22422");
         cv5.put(Column_Option,"Sur place");
-        cv5.put(Column_Image,"src/main/res/drawable-v24/gouth.jpg");
+        cv5.put(Column_Image,"lobo");
         cv5.put(Column_Menu_img,"src/main/res/drawable-v24/gouth1.jpg");
         cv5.put(Column_Reduction,"10%");
         cv5.put(Column_Category,"COFFE");
