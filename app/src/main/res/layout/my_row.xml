@@ -49,7 +49,6 @@
                 android:layout_height="wrap_content"
 
                 android:text="Category"
-                app:layout_constraintEnd_toEndOf="@+id/nomRest"
                 app:layout_constraintStart_toStartOf="@+id/nomRest"
                 app:layout_constraintTop_toBottomOf="@+id/nomRest" />
 

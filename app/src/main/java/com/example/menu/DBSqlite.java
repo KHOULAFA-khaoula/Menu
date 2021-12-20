@@ -149,7 +149,38 @@ public class DBSqlite extends SQLiteOpenHelper {
         cv5.put(Column_Category,"COFFE");
         Log.d("middle","in middle of creation");
         cv5.put(Column_Speciality,"Café, Petit-déjeuner, Pizza, Tapas");
-        long result = db.insert(Table_NameF,null,cv5);
+        db.insert(Table_NameF,null,cv5);
+        //####################################################################
+        ContentValues cv6 = new ContentValues();
+        cv6.put(Column_Nom,"Café La Giraffe");
+        cv6.put(Column_Nom_cat,"COFFE");
+        cv6.put(Column_Description,"Cuisine maison, plats raffinés et classiques, ambiance décontractée et conviviale, café familial.");
+        cv6.put(Column_Adresse,"Avenue tasseltant, n528 sidi youssef el waha\n" +
+                "(el waha)");
+        cv6.put(Column_Telephone,"0602984878");
+        cv6.put(Column_Option,"Sur place");
+        cv6.put(Column_Image,"giraffe");
+        cv6.put(Column_Menu_img,"src/main/res/drawable-v24/gouth1.jpg");
+        cv6.put(Column_Reduction,"10%");
+        cv6.put(Column_Category,"COFFE");
+        Log.d("middle","in middle of creation");
+        cv6.put(Column_Speciality,"Pizza");
+        db.insert(Table_NameF,null,cv6);
+        //#######################################################################
+        ContentValues cv7 = new ContentValues();
+        cv7.put(Column_Nom,"CNews Café");
+        cv7.put(Column_Nom_cat,"COFFE");
+        cv7.put(Column_Description,"Cuisine maison, plats raffinés et classiques, ambiance décontractée et conviviale, café familial.");
+        cv7.put(Column_Adresse,"1 Rue Abou Baker Seddiq");
+        cv7.put(Column_Telephone,"05 24 44 99 99");
+        cv7.put(Column_Option,"Sur place");
+        cv7.put(Column_Image,"cnews");
+        cv7.put(Column_Menu_img,"src/main/res/drawable-v24/gouth1.jpg");
+        cv7.put(Column_Reduction,"10%");
+        cv7.put(Column_Category,"COFFE");
+        Log.d("middle","in middle of creation");
+        cv7.put(Column_Speciality,"Fast-food, Petit-déjeuner, Café");
+        long result = db.insert(Table_NameF,null,cv7);
         if(result == -1){
             Toast.makeText(context,"failed",Toast.LENGTH_SHORT).show();
         }else{
