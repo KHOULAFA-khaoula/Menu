@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Lenovo/Desktop/MobileProject/app/src/main/res/layout/activity_menu.xml" value="0.4" />
         <entry key="..\:/Users/ahmed/AndroidStudioProjects/Menu/app/src/main/res/drawable/buttonbordershadow.xml" value="0.2203125" />
         <entry key="..\:/Users/ahmed/AndroidStudioProjects/Menu/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2169230769230769" />
         <entry key="..\:/Users/ahmed/AndroidStudioProjects/Menu/app/src/main/res/drawable/round.xml" value="0.2203125" />
@@ -12,6 +13,10 @@
         <entry key="..\:/Users/ahmed/AndroidStudioProjects/Menu/app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="..\:/Users/ahmed/AndroidStudioProjects/Menu/app/src/main/res/layout/my_row.xml" value="0.33" />
         <entry key="..\:/Users/ahmed/AndroidStudioProjects/Menu/app/src/main/res/mipmap-anydpi-v26/ic_launcher_MLogo.xml" value="0.17447916666666666" />
+        <entry key="..\:/Users/hp/AndroidStudioProjects/MobileProject/app/src/main/res/layout/activity_home.xml" value="0.1" />
+        <entry key="..\:/Users/hp/AndroidStudioProjects/MobileProject/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/hp/AndroidStudioProjects/MobileProject/app/src/main/res/layout/activity_restaurant_by_category.xml" value="0.1" />
+        <entry key="..\:/Users/hp/AndroidStudioProjects/MobileProject/app/src/main/res/layout/category_item.xml" value="0.1" />
       </map>
     </option>
   </component>

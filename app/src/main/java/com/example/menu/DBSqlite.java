@@ -10,6 +10,10 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
+import com.example.menu.model.Category;
+
+import java.util.ArrayList;
+
 public class DBSqlite extends SQLiteOpenHelper {
     private static DBSqlite sInstance;
     private Context context;
@@ -33,6 +37,8 @@ public class DBSqlite extends SQLiteOpenHelper {
     public static final  String Column_id_cat = "_id";
     public static final  String Column_Nom_cat = "nomCat";
     public static final  String Column_Nom_op = "nomOpt";
+    public static final  String Column_Img_Cat ="Image_category";
+    public static final String Column_Cat_music="category_music";
 
     /*public static synchronized DBSqlite getInstance(Context context) {
         // Use the application context, which will ensure that you
@@ -54,7 +60,7 @@ public class DBSqlite extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         Log.d("creat","in middle of construction");
-        String queryD1 = "create table "+Table_NameD1+"("+Column_id_cat+" Integer primary key AUTOINCREMENT,"+Column_Nom_cat+" Text"+");";
+        String queryD1 = "create table "+Table_NameD1+"("+Column_id_cat+" Integer primary key AUTOINCREMENT,"+Column_Nom_cat+" Text,"+Column_Img_Cat+" INTEGER,"+Column_Cat_music+" INTEGER"+");";
         String queryD2 = "create table "+Table_NameD2+"("+Column_id_op+" Integer primary key AUTOINCREMENT,"+Column_Nom_op+" Text"+");";
         String queryF  = "create table "+Table_NameF+"("+Column_id+" Integer primary key AUTOINCREMENT,"+Column_Nom+" Text,"+Column_Nom_cat+" Text,"+Column_Description+" Text,"+Column_Adresse+" Text,"+Column_Telephone+" Text,"+Column_Option+" Text,"+Column_Image+" Text,"+Column_Menu_img+" Text,"+Column_Reduction+" Text,"+Column_Category+" Text,"+Column_Speciality+" Text,"+"FOREIGN KEY("+Column_Option+") REFERENCES "+Table_NameD2+"("+Column_id_op+"),"+"FOREIGN KEY("+Column_Nom_cat+") REFERENCES "+Table_NameD1+"("+Column_id_cat+"));";
         db.execSQL(queryD1);
@@ -74,14 +80,37 @@ public class DBSqlite extends SQLiteOpenHelper {
     void addData(){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
+
         cv.put(Column_Nom_cat,"FAST-FOOD");
+        cv.put(Column_Img_Cat,R.drawable.fastfood);
+        cv.put(Column_Cat_music,R.raw.fast_food_music);
         db.insert(Table_NameD1,null,cv);
+        //##########################################
         cv.put(Column_Nom_cat,"ITALIEN");
+        cv.put(Column_Img_Cat,R.drawable.italian);
+        cv.put(Column_Cat_music,R.raw.italian_music);
         db.insert(Table_NameD1,null,cv);
+        //##########################################
         cv.put(Column_Nom_cat,"COFFE");
+        cv.put(Column_Img_Cat,R.drawable.coffe);
+        cv.put(Column_Cat_music,R.raw.coffe_music);
         db.insert(Table_NameD1,null,cv);
+        //##########################################
         cv.put(Column_Nom_cat,"ASIAN");
+        cv.put(Column_Img_Cat,R.drawable.asian);
+        cv.put(Column_Cat_music,R.raw.asian_music);
         db.insert(Table_NameD1,null,cv);
+        //##########################################
+        cv.put(Column_Nom_cat,"ORIENTAL");
+        cv.put(Column_Img_Cat,R.drawable.oriental);
+        cv.put(Column_Cat_music,R.raw.oriental_music);
+        db.insert(Table_NameD1,null,cv);
+        //##########################################
+        cv.put(Column_Nom_cat,"MOROCCAN");
+        cv.put(Column_Img_Cat,R.drawable.moroccan);
+        cv.put(Column_Cat_music,R.raw.moroccan_music);
+        db.insert(Table_NameD1,null,cv);
+
         ContentValues cv1 = new ContentValues();
         cv1.put(Column_Nom_op,"Sur place");
         db.insert(Table_NameD2,null,cv1);
@@ -198,5 +227,32 @@ public class DBSqlite extends SQLiteOpenHelper {
         return cursor;
     }
 
+    public Category[] getAllCategories()
+    {
+        ArrayList<Category> categoryList = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM "+Table_NameD1,null);
+
+        while (cursor.moveToNext())
+        {
+            int id =  cursor.getInt(0);
+            String category_name = cursor.getString(1);
+            int image = cursor.getInt(2);
+            int music = cursor.getInt(3);
+            Category category = new Category(id,category_name,image,music);
+            categoryList.add(category);
+        }
+        return categoryList.toArray(new Category[categoryList.size()]);
+    }
+
+    Cursor getRestaurantByCat(String category){
+        String query = "SELECT * FROM "+Table_NameF+" WHERE category = '"+category+"'";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = null;
+        if(db!=null){
+            cursor = db.rawQuery(query,null);
+        }
+        return cursor;
+    }
 
 }

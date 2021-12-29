@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">My Menu</string>
     <string name="start">Start</string>
+    <string name="nom_resto">Hillo</string>
+    <string name="sp_cialit">Spécialité</string>
+    <string name="adresse">Adresse</string>
 </resources>
